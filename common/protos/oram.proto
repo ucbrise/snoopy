@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package oram;
+
+
+// OramRequest represents an ORAM access request (read or write).
+message OramRequest {
+    int32 client_id = 1;
+    repeated bytes ct = 2;
+    repeated bytes iv = 3;
+    repeated bytes tag = 4;
+}
+
+message OramRequests {
+    int32 balancer_id = 1;
+    bytes ct = 2;
+    bytes iv = 3;
+    bytes tag = 4;
+    uint32 len = 5;
+}
+
+message OramResponse {
+    repeated bytes ct = 1;
+    repeated bytes iv = 2;
+    repeated bytes tag = 3;
+}
+
+message OramResponses {
+    bytes ct = 1;
+    bytes iv = 2;
+    bytes tag = 3;
+    uint32 len = 4;
+}
+
+service Oram {
+    rpc ReadKey(OramRequest) returns (OramResponse);
+    rpc WriteKey(OramRequest) returns (OramResponse);
+    rpc AccessKey(OramRequest) returns (OramResponse);
+    // rpc ReadKeysStream(OramRequests) returns (stream OramResponse);
+    // rpc WriteKeysStream(OramRequests) returns (stream OramResponse);
+    rpc BatchedReadKeys(OramRequests) returns (OramResponses);
+    rpc BatchedWriteKeys(OramRequests) returns (OramResponses);
+    rpc BatchedAccessKeys(OramRequests) returns (OramResponses);
+}
+
+
+// TODO: API required for oblivious shuffle
+service Storage {
+
+}

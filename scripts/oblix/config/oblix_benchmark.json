@@ -1,0 +1,38 @@
+{
+  "experiment_dir": "results/oblix_benchmark/2021:08:16:23:41",
+  "experiment_name": "oblix_benchmark",
+  "image_path": "resourceGroups/scalable_oram/providers/Microsoft.Compute/galleries/artifact_evaluation/images/oblix/versions/0.0.1",
+  "instance_types": {
+    "oblix": "Standard_DC4s_v2"
+  },
+  "local_project_dir": "/home/azureuser/snoopy/experiments",
+  "local_src_dir": "/home/azureuser/snoopy",
+  "location": "eastus",
+  "machines": {
+    "oblix_ips": [
+      "52.168.15.126"
+    ],
+    "oblix_private_ips": [
+      "52.168.15.126"
+    ]
+  },
+  "nbBlockSizes": [
+    160
+  ],
+  "nbBlocks": [
+    10,
+    100,
+    1000,
+    10000,
+    100000,
+    1000000,
+    2000000
+  ],
+  "num_instances": {
+    "oblix": 1
+  },
+  "remote_project_dir": "/home/azureuser/snoopy/experiments",
+  "ssh_key_file": "~/.ssh/scalable_oram.pem",
+  "ssh_key_pub": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCkRPpE2bKwHmOW/gsG1mOHcz8T7JdGlIjz3YU7/RW8sRFaikUiA240Z+1SIsw+QbHFAbyhy9+OLOLQRN8CF9/cS+DU3BKXECGJP1dkiSPVs9tk9+Gfx2TILdHnY3tD0ylFKQYftNgin6OABUsTS//DFjEYbmGSDU+DGIvWSOirByWq0sQChX/SOueFAHWE2iO+ohINoZnFwAhYmwpV2feb7J3dK6DWVyne0JpNplodvhOaFA3hCRUnrJeAPb+WUrCsTdProkMLZOV1dpqq2N++VUWv690VUxZ+gzqGo7JkG2Vh02DuQlCarQ5AmY9o6Ws4O7fUS/CJ08hPISMy6brX",
+  "username": "azureuser"
+}

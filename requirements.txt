@@ -1,0 +1,9 @@
+azure-mgmt-resource
+azure-mgmt-compute
+azure-mgmt-network
+azure-identity
+numpy
+matplotlib
+seaborn
+tqdm
+brewer2mpl

@@ -1,0 +1,134 @@
+{
+  "aws_base_table_name": "SHIELD",
+  "aws_rcus": "10000",
+  "aws_trx_images_table_name": "TransactionsImages",
+  "aws_trx_table_name": "Transactions",
+  "aws_wcus": "10000",
+  "backing_store_type": "oram_par_server",
+  "cc_manager_type": "nobatch",
+  "client_ips": [
+    [
+      "40.76.94.69"
+    ]
+  ],
+  "client_private_ips": [
+    [
+      "10.0.0.4"
+    ]
+  ],
+  "client_type": "shield",
+  "clientmain": "shield.benchmarks.ycsb.StartYCSBClient",
+  "clients": [
+    [
+      "40.76.94.69"
+    ]
+  ],
+  "commit_on_durable": "true",
+  "db_file_name": "db",
+  "db_file_path": "/home/azureuser/snoopy/experiments/results/diff-clients-base-oram-par-server-1/db",
+  "db_in_memory": "true",
+  "exp_dir": "default",
+  "exp_length": "60",
+  "experiment_dir": "results/diff-clients-base-oram-par-server-1/2021:08:18:01:14",
+  "experiment_name": "diff-clients-base-oram-par-server-1",
+  "finalise_batch_buffer_t": "10",
+  "gc_activated": "false",
+  "git_origin": "ucbrise/snoopy.git",
+  "github_key": "~/.ssh/id_ed25519_snoopy",
+  "github_pub_key": "~/.ssh/id_ed25519_snoopy.pub",
+  "image_path": "resourceGroups/sgx3_group/providers/Microsoft.Compute/galleries/images/images/dumbo_2",
+  "instance_types": {
+    "client": [
+      "Standard_D32d_v4"
+    ],
+    "proxy": "Standard_D8d_v4",
+    "storage": "Standard_D16d_v4"
+  },
+  "jar": "shield-1.0-SNAPSHOT.jar",
+  "javacommandclient": "java -ea  -Xms28g -Xmx28g -Xss515m   -XX:+UnlockDiagnosticVMOptions -XX:ParGCCardsPerStrideChunk=32768 -XX:+UseParNewGC -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=2 -XX:NewSize=3g -XX:MaxNewSize=3g  -XX:+UseConcMarkSweepGC -XX:+AlwaysPreTouch -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -XX:+PrintTenuringDistribution -XX:+PrintGCApplicationStoppedTime",
+  "javacommandclient_": "java -agentpath:/home/ubuntu/jprofiler10/bin/linux-x64/libjprofilerti.so=port=8849 -ea  -Xms28g -Xmx28g -Xss515m   -XX:+UnlockDiagnosticVMOptions -XX:ParGCCardsPerStrideChunk=32768 -XX:+UseParNewGC -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=2 -XX:NewSize=3g -XX:MaxNewSize=3g  -XX:+UseConcMarkSweepGC -XX:+AlwaysPreTouch -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -XX:+PrintTenuringDistribution -XX:+PrintGCApplicationStoppedTime",
+  "javacommandg1": "java  -Xmn800M  -Xms48g -Xmx48g -XX:+UseG1GC -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -jar",
+  "javacommandserver": "java -ea -server  -Xms40g -Xmx58g -Xss515m   -XX:+UseConcMarkSweepGC -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -XX:+PrintTenuringDistribution -XX:+PrintGCApplicationStoppedTime",
+  "key_file_name": "data_keys.txt",
+  "key_size": "16",
+  "kv_name": "kvstore",
+  "loadermain": "shield.benchmarks.ycsb.YCSBLoader",
+  "local_project_dir": "/home/azureuser/snoopy/experiments",
+  "local_src_dir": "/home/azureuser/snoopy/third_party/shield",
+  "location": "eastus",
+  "log_folder": "logs",
+  "max_nb_stride": "20",
+  "max_pending_batches": "20",
+  "min_between_stride": "100",
+  "must_load_keys": "false",
+  "n_receiver_net_threads": "1",
+  "n_sender_net_threads": "1",
+  "n_worker_threads": "16",
+  "nb_client_threads": "1",
+  "nb_keys": "2000000",
+  "nb_loader_threads": "1",
+  "nb_transactions": "10000",
+  "nb_values": "1",
+  "nbclients": [
+    "1"
+  ],
+  "node_ip_address": "10.0.0.4",
+  "node_uid": "1",
+  "num_instances": {
+    "client": 1,
+    "proxy": 1,
+    "storage": 1
+  },
+  "oram_a": "168",
+  "oram_encrypt_blocks": "true",
+  "oram_key_size": "16",
+  "oram_max_blocks": "2000000",
+  "oram_nonce_len": "8",
+  "oram_pad_batches": "true",
+  "oram_s": "196",
+  "oram_value_size": "160",
+  "oram_write_end_batch": "false",
+  "oram_write_without_read": "false",
+  "oram_z": "100",
+  "pad_columns": "true",
+  "proxy_ip_address": "10.0.0.5",
+  "proxy_ips": [
+    "40.114.112.18"
+  ],
+  "proxy_listening_port": "22928",
+  "proxy_private_ips": [
+    "10.0.0.5"
+  ],
+  "proxymain": "shield.benchmarks.utils.StartEchoProxy",
+  "ramp_down": "15",
+  "ramp_up": "15",
+  "read_ratio": "50",
+  "remote_backing_store_type": "noram_hashmap",
+  "remote_project_dir": "/home/azureuser/snoopy/experiments",
+  "remote_store_ip_address": "10.0.0.6",
+  "remote_store_listening_port": "35024",
+  "reuse_data": "true",
+  "run_name": "trx.dat",
+  "ssh_key_file": "~/.ssh/scalable_oram.pem",
+  "ssh_key_pub": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCkRPpE2bKwHmOW/gsG1mOHcz8T7JdGlIjz3YU7/RW8sRFaikUiA240Z+1SIsw+QbHFAbyhy9+OLOLQRN8CF9/cS+DU3BKXECGJP1dkiSPVs9tk9+Gfx2TILdHnY3tD0ylFKQYftNgin6OABUsTS//DFjEYbmGSDU+DGIvWSOirByWq0sQChX/SOueFAHWE2iO+ohINoZnFwAhYmwpV2feb7J3dK6DWVyne0JpNplodvhOaFA3hCRUnrJeAPb+WUrCsTdProkMLZOV1dpqq2N++VUWv690VUxZ+gzqGo7JkG2Vh02DuQlCarQ5AmY9o6Ws4O7fUS/CJ08hPISMy6brX",
+  "storage_ips": [
+    [
+      "40.76.94.250"
+    ]
+  ],
+  "storage_private_ips": [
+    [
+      "10.0.0.6"
+    ]
+  ],
+  "storagemain": "shield.benchmarks.utils.StartDataStore",
+  "stride_size": "500",
+  "useloader": "false",
+  "useproxy": "false",
+  "username": "azureuser",
+  "usestorage": "true",
+  "value_size": "160",
+  "workload_type": "uniform",
+  "workload_zipfian_param": "0.99",
+  "writes_size": "500"
+}

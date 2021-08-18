@@ -1,0 +1,41 @@
+// Copyright (c) Open Enclave SDK contributors.
+// Licensed under the MIT License.
+
+enclave {
+    from "openenclave/edl/syscall.edl" import *;
+    from "platform.edl" import *;
+
+    trusted {
+        public int set_params(int num_total_blocks, int blocks_per_bucket, int num_balancers, int num_suborams, int suboram_id, int *num_local_blocks, int num_sort_threads);
+        public int init(void *s);
+        public int init_bench_sort(void *s);
+        public int buffered_bucket_sort(int thread_idx);
+        public int shuffle_blocks();
+        public int scan_blocks();
+        public int insecure_sort();
+        public int bitonic_sort();
+        public int parallel_bitonic_sort(int thread_id);
+        public int parallel_bitonic_sort_nonadaptive(int thread_id);
+        public int bucket_sort();
+        public void prefetch_bucket_sort();
+        public int melbourne_sort();
+        public int verify_sorted();
+        public void process_batch(int *ret, uint8_t *in_ct, uint8_t *in_iv, uint8_t *in_tag, uint8_t *out_ct, uint8_t *out_iv, uint8_t *out_tag, uint32_t batch_sz, int32_t balancer_id);
+        public void table_process_batch_parallel(int *ret, uint8_t *in_ct, uint8_t *in_iv, uint8_t
+            *in_tag, uint8_t *out_ct, uint8_t *out_iv, uint8_t *out_tag, uint32_t
+            batch_sz, int32_t balancer_id, int thread_id);
+
+        // Oblix ecalls
+        public int oblix_init();
+        public void oblix_process_batch(int *ret, uint8_t *in_ct, uint8_t *in_iv, uint8_t *in_tag, uint8_t *out_ct, uint8_t *out_iv, uint8_t *out_tag, uint32_t batch_sz, int32_t balancer_id);
+    };
+
+    untrusted {
+        // Oblix ocalls
+        char *ocall_setup_ramStore(size_t num, int size);
+        size_t ocall_nread_ramStore(size_t blockCount,[in,count=blockCount]long long* indexes,size_t len);
+        void ocall_nwrite_ramStore(size_t blockCount,[in,count=blockCount]long long* indexes,size_t len);
+        void ocall_initialize_ramStore(long long begin,long long end, size_t len);
+        void ocall_write_ramStore(long long pos, size_t len);
+    };
+};

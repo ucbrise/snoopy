@@ -1,0 +1,150 @@
+{
+  "experiment_dir": "results/balancer_match_responses/2021:08:12:06:54",
+  "experiment_name": "balancer_match_responses",
+  "experiment_type": "bench_match_responses",
+  "git_origin": "ucbrise/snoopy.git",
+  "github_key": "~/.ssh/id_ed25519_snoopy",
+  "github_pub_key": "~/.ssh/id_ed25519_snoopy.pub",
+  "image_path": "resourceGroups/scalable_oram/providers/Microsoft.Compute/galleries/artifact_evaluation/images/experiment_machines/versions/0.0.6",
+  "instance_types": {
+    "balancer": "Standard_DC4s_v2",
+    "client": "Standard_D16d_v4",
+    "suboram": "Standard_DC4s_v2"
+  },
+  "local_project_dir": "/home/azureuser/snoopy/experiments",
+  "local_src_dir": "/home/azureuser/snoopy",
+  "location": "eastus",
+  "log_folder": "log",
+  "machines": {
+    "balancer_ips": [
+      "52.249.248.252",
+      "52.152.230.248",
+      "52.152.231.32",
+      "52.152.231.86",
+      "52.152.231.88"
+    ],
+    "balancer_private_ips": [
+      "10.0.0.5",
+      "10.0.0.6",
+      "10.0.0.7",
+      "10.0.0.8",
+      "10.0.0.9"
+    ],
+    "client_ips": [
+      "52.249.250.5"
+    ],
+    "client_private_ips": [
+      "10.0.0.4"
+    ],
+    "suboram_ips": [
+      [
+        "52.152.231.105"
+      ],
+      [
+        "52.152.224.64"
+      ],
+      [
+        "52.152.224.72"
+      ],
+      [
+        "52.152.224.82"
+      ],
+      [
+        "52.152.224.101"
+      ],
+      [
+        "52.249.251.137"
+      ],
+      [
+        "52.152.224.107"
+      ],
+      [
+        "20.102.53.220"
+      ],
+      [
+        "13.68.243.155"
+      ],
+      [
+        "13.68.240.28"
+      ],
+      [
+        "52.152.224.148"
+      ],
+      [
+        "52.152.224.164"
+      ],
+      [
+        "52.152.224.227"
+      ],
+      [
+        "52.152.231.136"
+      ],
+      [
+        "52.152.231.181"
+      ]
+    ],
+    "suboram_private_ips": [
+      [
+        "10.0.0.10"
+      ],
+      [
+        "10.0.0.11"
+      ],
+      [
+        "10.0.0.12"
+      ],
+      [
+        "10.0.0.13"
+      ],
+      [
+        "10.0.0.14"
+      ],
+      [
+        "10.0.0.15"
+      ],
+      [
+        "10.0.0.16"
+      ],
+      [
+        "10.0.0.17"
+      ],
+      [
+        "10.0.0.18"
+      ],
+      [
+        "10.0.0.19"
+      ],
+      [
+        "10.0.0.20"
+      ],
+      [
+        "10.0.0.21"
+      ],
+      [
+        "10.0.0.22"
+      ],
+      [
+        "10.0.0.23"
+      ],
+      [
+        "10.0.0.24"
+      ]
+    ]
+  },
+  "max_batchsz": 12800,
+  "max_latency_ms": 1000,
+  "min_batchsz": 100,
+  "no_summarize": true,
+  "num_blocks": 1024,
+  "num_instances": {
+    "balancer": 5,
+    "client": 1,
+    "suboram": 15
+  },
+  "remote_project_dir": "/home/azureuser/snoopy/experiments",
+  "replication_factor": 1,
+  "run_name": "test",
+  "ssh_key_file": "~/.ssh/scalable_oram.pem",
+  "ssh_key_pub": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCkRPpE2bKwHmOW/gsG1mOHcz8T7JdGlIjz3YU7/RW8sRFaikUiA240Z+1SIsw+QbHFAbyhy9+OLOLQRN8CF9/cS+DU3BKXECGJP1dkiSPVs9tk9+Gfx2TILdHnY3tD0ylFKQYftNgin6OABUsTS//DFjEYbmGSDU+DGIvWSOirByWq0sQChX/SOueFAHWE2iO+ohINoZnFwAhYmwpV2feb7J3dK6DWVyne0JpNplodvhOaFA3hCRUnrJeAPb+WUrCsTdProkMLZOV1dpqq2N++VUWv690VUxZ+gzqGo7JkG2Vh02DuQlCarQ5AmY9o6Ws4O7fUS/CJ08hPISMy6brX",
+  "username": "azureuser"
+}

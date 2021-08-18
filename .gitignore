@@ -4,3 +4,4 @@ build/
 common/*mrenclave.h
 *.pdf
 *.pgf
+ssh_config

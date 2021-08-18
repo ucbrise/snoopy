@@ -1,0 +1,8 @@
+[submodule "third_party/protobuf"]
+	path = third_party/protobuf
+	url = https://github.com/protocolbuffers/protobuf.git
+    ignore = all
+[submodule "third_party/grpc"]
+	path = third_party/grpc
+	url = https://github.com/grpc/grpc.git
+    ignore = all

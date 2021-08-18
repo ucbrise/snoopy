@@ -1,0 +1,18 @@
+// Copyright (c) Open Enclave SDK contributors.
+// Licensed under the MIT License.
+
+enclave {
+    from "openenclave/edl/syscall.edl" import *;
+    from "platform.edl" import *;
+
+    trusted {
+        public void init_load_balancer(int num_suborams, int num_blocks, int num_threads);
+        public void create_batch(uint8_t **in_ct_arr, uint8_t **in_iv_arr,
+            uint8_t **in_tag_arr, uint32_t *in_client_id_arr, uint8_t
+            **out_ct_arr, uint8_t **out_iv_arr, uint8_t **out_tag_arr, int
+            num_reqs, int reqs_per_suboram);
+        public void match_responses_to_reqs(uint8_t **in_ct_arr, uint8_t **in_iv_arr, uint8_t **in_tag_arr, uint32_t *in_client_id_arr, uint8_t **out_ct_arr, uint8_t **out_iv_arr, uint8_t **out_tag_arr);
+        public void start_worker_loop(int thread_id);
+        public void stop_workers();
+    };
+};
