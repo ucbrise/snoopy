@@ -2,6 +2,7 @@ import argparse
 import datetime
 import queue
 import sys
+import time
 
 from pathlib import Path, PurePath
 
@@ -183,6 +184,9 @@ def main():
         print("Provisioning...")
         provisionExperiment(config_file, MACHINES_FILE)
     if args.setup:
+        if args.provision:
+            print("Waiting 30s for provisioned VMs to come online...")
+            time.sleep(30)
         print("Setting up...")
         setupExperiment(config_file)
     if args.run:

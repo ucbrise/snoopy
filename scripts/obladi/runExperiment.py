@@ -689,6 +689,9 @@ def main():
         print("Provisioning...")
         provisionExperiment(PROP_FILE)
     if args.setup:
+        if args.provision:
+            print("Waiting 30s for provisioned VMs to come online...")
+            time.sleep(30)
         print("Setting up...")
         setupExperiment(PROP_FILE)
     if args.run:

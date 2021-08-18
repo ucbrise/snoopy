@@ -16,7 +16,7 @@ def main():
         for line in f.readlines():
             if not line:
                 continue
-            obladi_througput = int(line.strip().split(" ")[-1])
+            obladi_througput = float(line.strip().split(" ")[-1])
     results["obladi_throughput"] = obladi_througput
 
     oblix_file = Path(args.oblix_dir) / "final_results.json"
