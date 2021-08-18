@@ -15,12 +15,12 @@ This prototype is released under the Apache v2 license (see [License](LICENSE)).
 * [Figure 9](#figure-9) (195 compute-minutes)
 * [Figure 10a](#figure-10a) (35 compute-minutes)
 * [Figure 10b](#figure-10b) (10 compute-minutes)
-* [Figure 11a, 11b, 11c](#figure-11a-11b-11c) (?? compute-minutes)
-* Figure 12a (2 compute-minutes)
-* Figure 12b (12 compute-minutes)
-* Figure 13 
-* Figure 14
-* [Cleanup](#cleanup) (1 human-minute, 10 compute-minutes)
+* [Figure 11a, 11b, 11c](#figure-11a-11b-11c) (6 compute-minutes)
+* [Figure 12a](#figure-12a) (2 compute-minutes)
+* [Figure 12b](#figure-12b) (12 compute-minutes)
+* [Figure 13](#figure-13) (160 compute-minutes) 
+* [Figure 14a, 14b](#figure-14a-14b) (2 compute-minutes)
+* [Cleanup](#cleanup) (10 compute-minutes)
 * [Comparing Figures](#comparing-figures) (20 human-minutes)
 
 
@@ -71,8 +71,8 @@ The rest of the instructions assume that your current working directory is `~/sn
 
 
 ## Figure 9
-```
-./figure9.sh
+```sh
+./figure9.sh      # 195 minutes
 ```
 <details>
 <summary>Sample Figure 9 output</summary>
@@ -81,7 +81,7 @@ The rest of the instructions assume that your current working directory is `~/sn
 </details>
 
 ## Figure 10a
-```
+```sh
 python3 runExperiment.py -f 10a -srg        # 35 minutes
 ```
 <details>
@@ -91,7 +91,7 @@ python3 runExperiment.py -f 10a -srg        # 35 minutes
 </details>
 
 ## Figure 10b
-```
+```sh
 python3 runExperiment.py -f 10b -srg        # 10 minutes
 ```
 The graph will be located in `~/snoopy/experiments/artifact_figures/10b.pdf`. The artifact evaluation graph is drawn on the left, and the graph in the paper is drawn on the right.
@@ -103,8 +103,8 @@ The graph will be located in `~/snoopy/experiments/artifact_figures/10b.pdf`. Th
 </details>
 
 ## Figure 11a, 11b, 11c
-```
-./figure11.sh
+```sh
+./figure11.sh     # 6 minutes
 ```
 <details>
 <summary>Sample Figure 11a, 11b, 11c output</summary>
@@ -115,8 +115,8 @@ The graph will be located in `~/snoopy/experiments/artifact_figures/10b.pdf`. Th
 </details>
 
 ## Figure 12a
-```
-python3 runExperiment.py -f 12a -srg
+```sh
+python3 runExperiment.py -f 12a -srg      # 2 minutes
 ```
 <details>
 <summary>Sample Figure 12a output</summary>
@@ -125,6 +125,9 @@ python3 runExperiment.py -f 12a -srg
 </details>
 
 ## Figure 12b
+```sh
+python3 runExperiment.py -f 12b -srg      # 12 minutes
+```
 <details>
 <summary>Sample Figure 12b output</summary>
     
@@ -132,8 +135,8 @@ python3 runExperiment.py -f 12a -srg
 </details>
 
 ## Figure 13
-```
-./figure13.sh
+```sh
+./figure13.sh     # 160 minutes
 ```
 <details>
 <summary>Sample Figure 13 output</summary>
@@ -141,16 +144,20 @@ python3 runExperiment.py -f 12a -srg
 ![Sample Figure 13](experiments/artifact_figures/sample/13.png)
 </details>
 
-## Figure 14
-**PREREQUISITE: Requires Figure 11a, 11b, and 11c.**
+## Figure 14a, 14b
+**PREREQUISITE: Requires [Figure 11a, 11b, and 11c](#figure-11a-11b-11c).**
+```sh
+./figure14.sh     # 2 minutes
+```
 <details>
-<summary>Sample Figure 14 output</summary>
-    
-![Sample Figure 14](experiments/artifact_figures/sample/14.png)
+<summary>Sample Figure 14a, 14b output</summary>
+   
+![Sample Figure 14a](experiments/artifact_figures/sample/14a.png)
+![Sample Figure 14b](experiments/artifact_figures/sample/14b.png)
 </details>
 
 ## Cleanup
-```
+```sh
 python3 runExperiment.py -c     # 10 minutes
 ```
 This command destroys the cluster. **Please remember to run this when you are done with artifact evaluation.** It costs ~$370/per day to run the cluster!
@@ -203,9 +210,10 @@ All figures produced by this artifact are located in `~/snoopy/experiments/artif
 </details>
 
 <details>
-<summary>Sample Figure 14 output</summary>
-    
-![Sample Figure 14](experiments/artifact_figures/sample/14.png)
+<summary>Sample Figure 14a, 14b output</summary>
+   
+![Sample Figure 14a](experiments/artifact_figures/sample/14a.png)
+![Sample Figure 14b](experiments/artifact_figures/sample/14b.png)
 </details>
 
 # Playing with Snoopy
