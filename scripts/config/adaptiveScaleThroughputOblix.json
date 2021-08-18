@@ -11,7 +11,7 @@
   "git_origin": "ucbrise/snoopy.git",
   "github_key": "~/.ssh/id_ed25519_snoopy",
   "github_pub_key": "~/.ssh/id_ed25519_snoopy.pub",
-  "image_path": "resourceGroups/scalable_oram/providers/Microsoft.Compute/galleries/artifact_evaluation/images/experiment_machines/versions/0.0.6",
+  "image_path": "resourceGroups/scalable_oram/providers/Microsoft.Compute/galleries/artifact_evaluation/images/experiment_machines/versions/0.0.7",
   "instance_types": {
     "balancer": "Standard_DC4s_v2",
     "client": "Standard_D16d_v4",
