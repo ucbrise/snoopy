@@ -116,6 +116,12 @@ fig.patches.extend([plt.Rectangle((0.015,0.82), 0.97, 0.17,
 
 remove_chart_junk(plt,ax,grid=True)
 
-custom_style.save_fig(fig, out_name, [2, 2])
+if args.title:
+    plt.title(args.title, y=1.3)
+    #ax.set_title(args.title)
+if args.large:
+    custom_style.save_fig(fig, out_name, [3, 2.5], pad=0.3)
+else:
+    custom_style.save_fig(fig, out_name, [2, 2])
 plt.savefig("temp.pdf")
 
