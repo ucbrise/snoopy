@@ -28,8 +28,10 @@ oblix_delete_latency = 0.0
 oblix_latency =  (oblix_insert_latency + (oblix_search_latency + oblix_delete_latency)) / 2.0
 '''
 TIME_MS = 1
+baseline = util.parse_baseline(args.baseline)
+oblix_latency = (baseline["oblix_latency"]["160"]["2000000"] * 1000) / TIME_MS
 oblix_latency = (0.001146628141*1000) / TIME_MS
-obladi_latency = 149 / TIME_MS
+obladi_latency = baseline["obladi_latency"] / TIME_MS
 
 data = util.parseDataNew2(in_name)
 suborams = util.getListOfVals(data, "suborams")

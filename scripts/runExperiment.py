@@ -794,27 +794,27 @@ def graphData(propertyFile):
         figName = '9.pdf'
         title = "Figure 9"
         script = Path("fig/scale_throughput.py")
-        paperDataFile = Path("fig/scale_throughput.dat")
+        paperDataFile = paperFigDir / "scale_throughput.dat"
     elif figure == "10a":
         figName = '10a.pdf'
         title = "Figure 10a"
         script = Path("fig/scale_data.py")
-        paperDataFile = Path("fig/scale_data.dat")
+        paperDataFile = paperFigDir / "scale_data.dat"
     elif figure == "10b":
         figName = '10b.pdf'
         title = "Figure 10b"
         script = Path("fig/suborams_vs_latency.py")
-        paperDataFile = Path("fig/suborams_vs_latency.dat")
+        paperDataFile = paperFigDir / "suborams_vs_latency.dat"
     elif figure == "12a":
         figName = '12a.pdf'
         title = "Figure 12a"
         script = Path("fig/sort_parallel.py")
-        paperDataFile = Path("fig/sort_parallel.dat")
+        paperDataFile = paperFigDir / "sort_parallel.dat"
     elif figure == "12b":
         figName = '12b.pdf'
         title = "Figure 12b"
         script = Path("fig/suboram_parallel.py")
-        paperDataFile = Path("fig/suboram_parallel.dat")
+        paperDataFile = paperFigDir / "suboram_parallel.dat"
     else:
         print("Unsupported figure:", figure)
         return

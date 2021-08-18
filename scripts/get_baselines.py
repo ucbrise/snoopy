@@ -17,7 +17,9 @@ def main():
             if not line:
                 continue
             obladi_througput = float(line.strip().split(" ")[-1])
+            obladi_latency = float(line.strip().split(" ")[1])
     results["obladi_throughput"] = obladi_througput
+    results["obladi_latency"] = obladi_latency
 
     oblix_file = Path(args.oblix_dir) / "final_results.json"
     with open(oblix_file, "r") as f:
