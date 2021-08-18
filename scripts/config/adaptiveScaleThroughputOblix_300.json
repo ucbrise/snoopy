@@ -5,8 +5,8 @@
     50
   ],
   "exp_sec": 10,
-  "experiment_dir": "results/oblix_adaptive_scale_throughput/2021:08:18:01:43",
-  "experiment_name": "oblix_adaptive_scale_throughput_500",
+  "experiment_dir": "results/oblix_adaptive_scale_throughput_500/2021:08:18:13:14",
+  "experiment_name": "oblix_adaptive_scale_throughput_300",
   "experiment_type": "adaptive",
   "git_origin": "ucbrise/snoopy.git",
   "github_key": "~/.ssh/id_ed25519_snoopy",

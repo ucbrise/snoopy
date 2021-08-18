@@ -2,14 +2,17 @@ import matplotlib.pyplot as plt
 import matplotlib.text as mtext
 import custom_style
 from custom_style import remove_chart_junk
-import sys
 import numpy as np
 import math
 import util
 import config
 
-out_name = sys.argv[2]
-in_name = sys.argv[1]
+import argparse
+from util import parse_args
+
+parser = argparse.ArgumentParser(description='Plot suborams vs. data size.')
+args = parse_args(parser)
+in_name, out_name = args.input, args.output
 print(("Out: %s") % (out_name))
 print(("In: %s") % (in_name))
 block_sz = 160
@@ -22,10 +25,14 @@ oblix_search_latency=0.00820251226425171
 oblix_avg_latency = (oblix_insert_latency + oblix_search_latency) / 2.0
 oblix_throughput = 1.0 / oblix_avg_latency
 '''
-oblix_latency = 0.0008669505119
+baseline = util.parse_baseline(args.baseline)
+oblix_latency = baseline["oblix_latency"]["160"]["2000000"]
 oblix_throughput = 1.0 / oblix_latency
+obladi_throughput = baseline["obladi_throughput"]
+#oblix_latency = 0.0008669505119
+#oblix_throughput = 1.0 / oblix_latency
 # obladi throughput for 2M blocks
-obladi_throughput = 6375 
+#obladi_throughput = 6375 
 
 data_1000 = util.parseDataNew2(in_name)
 data_500 = util.parseDataNew2(in_name+'_500')

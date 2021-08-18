@@ -815,6 +815,11 @@ def graphData(propertyFile):
         title = "Figure 12b"
         script = Path("fig/suboram_parallel.py")
         paperDataFile = paperFigDir / "suboram_parallel.dat"
+    elif figure == "13":
+        figName = '13.pdf'
+        title = "Figure 13"
+        script = Path("fig/scooby_oblix.py")
+        paperDataFile = paperFigDir / "scooby_oblix.dat"
     else:
         print("Unsupported figure:", figure)
         return
