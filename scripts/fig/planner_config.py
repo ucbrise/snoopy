@@ -9,9 +9,12 @@ import util
 import numpy as np
 import config
 
-out_name = sys.argv[2]
-in_name = sys.argv[1]
+import argparse
+from util import parse_args
 
+parser = argparse.ArgumentParser(description='Plot suborams vs. data size.')
+args = parse_args(parser)
+in_name, out_name = args.input, args.output
 print(("Out: %s") % (out_name))
 print(("In: %s") % (in_name))
 block_sz = 160
@@ -75,5 +78,12 @@ ax.set_xticks([1,2,3,4,5])
 #plt.legend()
 
 remove_chart_junk(plt,ax,xticks=False)
-custom_style.save_fig(fig, out_name, [1.6, 1.5])
+if args.title:
+    plt.title(args.title, y=1.3)
+    #ax.set_title(args.title)
+if args.large:
+    plt.legend()
+    custom_style.save_fig(fig, out_name, [3, 2.5], pad=0.3)
+else:
+    custom_style.save_fig(fig, out_name, [1.6, 1.5])
 plt.savefig("temp.pdf")

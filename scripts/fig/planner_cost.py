@@ -9,9 +9,12 @@ import util
 import numpy as np
 import config
 
-out_name = sys.argv[2]
-in_name = sys.argv[1]
+import argparse
+from util import parse_args
 
+parser = argparse.ArgumentParser(description='Plot suborams vs. data size.')
+args = parse_args(parser)
+in_name, out_name = args.input, args.output
 print(("Out: %s") % (out_name))
 print(("In: %s") % (in_name))
 block_sz = 160
