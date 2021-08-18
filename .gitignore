@@ -1,0 +1,6 @@
+debug/
+build/
+*.pyc
+common/*mrenclave.h
+*.pdf
+*.pgf
