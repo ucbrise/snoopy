@@ -30,9 +30,11 @@ with open(in_name, 'r') as f:
     lines = f.readlines()
     for line in lines:
         arr = line.split()
-        param = arr[0]
-        throughput[param].append(float(arr[1]))
-        cost[param].append(float(arr[2]))
+        _cost = float(arr[2])
+        if _cost < 4043:
+            param = arr[0]
+            throughput[param].append(float(arr[1]))
+            cost[param].append(float(arr[2]))
 
 throughput_filtered = throughput
 cost_filtered = cost

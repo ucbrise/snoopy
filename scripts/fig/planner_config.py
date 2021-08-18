@@ -31,10 +31,12 @@ with open(in_name, 'r') as f:
     lines = f.readlines()
     for line in lines:
         arr = line.split()
-        param = arr[0]
-        suborams[param].append(int(arr[1]))
-        lbs[param].append(float(arr[2]))
-        throughput[param].append(float(arr[3]))
+        n_suborams = int(arr[1])
+        if n_suborams < 6:
+            param = arr[0]
+            suborams[param].append(int(arr[1]))
+            lbs[param].append(float(arr[2]))
+            throughput[param].append(float(arr[3]))
 
 suborams_filtered = suborams
 lbs_filtered = lbs
