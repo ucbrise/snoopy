@@ -13,7 +13,7 @@ This prototype is released under the Apache v2 license (see [License](LICENSE)).
     * [Propagate Baselines](#propagate-baselines) (<1 minute)
 * [Provisioning Machines for Snoopy](#provisioning-machines-for-snoopy) (5 compute-minutes)
 * [Figure 9](#figure-9) (195 compute-minutes)
-* [Figure 10a](#figure-10a) (30 compute-minutes)
+* [Figure 10a](#figure-10a) (35 compute-minutes)
 * [Figure 10b](#figure-10b) (10 compute-minutes)
 * [Figure 11a, 11b, 11c](#figure-11a-11b-11c) (?? compute-minutes)
 * Figure 12a (2 compute-minutes)
@@ -82,7 +82,7 @@ The rest of the instructions assume that your current working directory is `~/sn
 
 ## Figure 10a
 ```
-python3 runExperiment.py -f 10a -srg        # 30 minutes
+python3 runExperiment.py -f 10a -srg        # 35 minutes
 ```
 <details>
 <summary>Sample Figure 10a output</summary>
