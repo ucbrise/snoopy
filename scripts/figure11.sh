@@ -9,7 +9,7 @@ cp ../experiments/results/balancer_match_responses/latest/final_results.dat ../e
 cp ../experiments/results/balancer_make_batch/latest/final_results.dat ../experiments/results/balancer_make_batch/latest/micro_balancer_make_batch.dat
 cp ../experiments/results/suboram_process_batch/latest/final_results.dat ../experiments/results/balancer_make_batch/latest/micro_suboram_batch_sz.dat
 
-cp fig/scale_breakdown*.py fig/custom_style.py fig/tufte.py ../experiments/results/balancer_make_batch/latest
+cp fig/scale_breakdown*.py fig/custom_style.py fig/tufte.py fig/util.py ../experiments/results/balancer_make_batch/latest
 
 cd ../experiments/results/balancer_make_batch/latest/
 python3 scale_breakdown_1024.py -l -t "Artifact Evaluation" 1024 ../../../artifact_figures/artifact/11a.pdf
