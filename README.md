@@ -24,7 +24,13 @@ This prototype is released under the Apache v2 license (see [License](LICENSE)).
 * [Comparing Figures](#comparing-figures) (20 human-minutes)
 
 
-For our experiments, we will use a cluster of Azure confidential computing instances. Reviewers should have been provided with credentials to our Azure environment.
+For our experiments, we will use a cluster of Azure confidential computing instances. Reviewers should have been provided with credentials to our Azure environment. Due to Azure resource quotas, we can only support one reviewer evaluating at a time. The entire artifact evaluation takes around 30 human-minutes and 7 compute-hours to complete.
+
+All experiments produce `.dat` files in subfolders of `~/snoopy/experiments/results`. These files are used to plot each figure that appears in the paper's evaluation, which are output in `~/snoopy/experiments/artifact_figures`. All of the data files used in the paper's evaluation graphs can be found in `~/snoopy/experiments/artifact_figures/paper`.
+
+Only the baselines can be run concurrently. Both baselines must finish running before you start running any of the figures. The figures can be run in any order, **except** Figure 14, which must be run after Figure 11a, 11b, and 11c.
+
+Each figure script is pretty automatic, i.e., you enter one command and the experiment(s) for that figure are run and plotted for you. Each experiment maintains a progress bar to give you an estimate of how much time is remaining.
 
 ## Baselines
 The Oblix and Obladi baselines can be run in parallel because they use different clusters. We recommend running the commands in two tmux windows.
@@ -36,9 +42,9 @@ python3 runExperiment.py --config=config/oblix_benchmark.json -psrc     # 5 minu
 ```
 The above command can be broken down as follows:
 
-* `-p` launches a cluster of one Azure SGX VM with an image that has [Oblix](https://people.eecs.berkeley.edu/~raluca/oblix.pdf) installed.
+* `-p` launches a cluster of 1 Azure SGX VM with an image that has [Oblix](https://people.eecs.berkeley.edu/~raluca/oblix.pdf) installed.
 * `-s` sets up a new experiment directory and symlinks it to `~/snoopy/experiments/oblix_benchmark/latest`.
-* `-r` runs the Oblix benchmark, which measures the latencies of accessing storages of 10-2M blocks. We use the latency of accessing 2M blocks in Figure 9 (in order to calculate the baseline throughput), Figure 10b (baseline latency), Figure 13 (in order to emulate using Oblix as a subORAM).
+* `-r` runs the Oblix benchmark, which measures the latencies of accessing oblivious storages containing 10-2M blocks. We use the latency of accessing 2M blocks in Figure 9 (in order to calculate the baseline throughput), Figure 10b (baseline latency), Figure 13 (in order to emulate using Oblix as a subORAM).
 * `-c` destroys the cluster. 
 
 ### Obladi
@@ -47,9 +53,9 @@ cd ~/snoopy/scripts/obladi
 python3 runExperiment.py -psrc      # 15 minutes
 ```
 The above command can be broken down as follows:
-* `-p` launches an [Obladi](https://www.usenix.org/system/files/osdi18-crooks.pdf) cluster of two VMs.
+* `-p` launches an [Obladi](https://www.usenix.org/system/files/osdi18-crooks.pdf) cluster of 2 VMs.
 * `-s` sets up a new experiment directory and symlinks it to `~/snoopy/experiments/diff-clients-base-oram-par-server-1/latest`. It compiles Obladi and sends the compiled jar files to the remote Obladi cluster.
-* `-r` runs the Obladi benchmark, which measures the throughput of accessing a storage containing 2M blocks. We use this throughput to plot Figure 9.
+* `-r` runs the Obladi benchmark, which measures the throughput of accessing an oblivious storage containing 2M blocks. We use this throughput to plot Figure 9.
 * `-c` destroys the cluster. 
 
 ### Propagate Baselines
@@ -57,7 +63,7 @@ After running the Obladi and Oblix baselines, run the following command to propa
 
 ```sh
 cd ~/snoopy/scripts
-./process_baselines.sh      # instant
+./process_baselines.sh      # <1 minute
 ```
 
 ## Provisioning Machines for Snoopy
@@ -65,7 +71,7 @@ cd ~/snoopy/scripts
 cd ~/snoopy/scripts
 ./provision_machines.sh     # 5 minutes
 ```
-The aforementioned command launches a cluster of 21 Azure SGX VMs and updates the experiment config files with the machines' IP addresses. It costs ~$370/per day to run this cluster, so please [destroy](#cleanup) the cluster when you are done with artifact evaluation.
+The above command launches a cluster of 21 Azure SGX VMs and updates the experiment config files with the machines' IP addresses. It costs ~$370/per day to run this cluster, so please [destroy](#cleanup) the cluster when you are done with artifact evaluation.
 
 The rest of the instructions assume that your current working directory is `~/snoopy/scripts`.
 
@@ -74,28 +80,37 @@ The rest of the instructions assume that your current working directory is `~/sn
 ```sh
 ./figure9.sh      # 195 minutes
 ```
+This command runs 3 experiments and then plots the data for Figure 9 showing the affect of increasing machines on total system throughput.
+
+The graph will be located in `~/snoopy/experiments/artifact_figures/9.pdf`. The artifact evaluation graph is drawn on the left, and the graph in the paper is drawn on the right.
 <details>
 <summary>Sample Figure 9 output</summary>
     
 ![Sample Figure 9](experiments/artifact_figures/sample/9.png)
 </details>
+There may be some variance between the artifact and paper graph, but their trends should strongly resemble each other. This is due to the artifact only measuring requests for 10 seconds/iteration instead of 20 seconds to save on time.
 
 ## Figure 10a
 ```sh
 python3 runExperiment.py -f 10a -srg        # 35 minutes
 ```
+This command runs 1 experiment and then plots the data for Figure 10a showing how the number of total blocks in Snoopy increases with increasing the number of subORAMs while maintaining a mean request latency of 160ms.
+
+The graph will be located in `~/snoopy/experiments/artifact_figures/10a.pdf`. The artifact evaluation graph is drawn on the left, and the graph in the paper is drawn on the right.
 <details>
 <summary>Sample Figure 10a output</summary>
     
 ![Sample Figure 10a](experiments/artifact_figures/sample/10a.png)
 </details>
+Again, there may be some variance between the artifact and paper graph, but their trends should strongly resemble each other. This is due to the artifact only measuring requests for 10 seconds/iteration instead of 20 seconds to save on time.
 
 ## Figure 10b
 ```sh
 python3 runExperiment.py -f 10b -srg        # 10 minutes
 ```
-The graph will be located in `~/snoopy/experiments/artifact_figures/10b.pdf`. The artifact evaluation graph is drawn on the left, and the graph in the paper is drawn on the right.
+This command runs 1 experiment and then plots the data for Figure 10b showing how the mean request latency in Snoopy decreases with increasing the number of subORAMs.
 
+The graph will be located in `~/snoopy/experiments/artifact_figures/10b.pdf`. The artifact evaluation graph is drawn on the left, and the graph in the paper is drawn on the right.
 <details>
 <summary>Sample Figure 10b output</summary>
     
@@ -106,6 +121,8 @@ The graph will be located in `~/snoopy/experiments/artifact_figures/10b.pdf`. Th
 ```sh
 ./figure11.sh     # 6 minutes
 ```
+This command runs 3 experiments and then plots the data for Figure 11a, 11b, and 11c, showing the performance breakdowns for processing a batch in Snoopy while varying the number of requests in each batch. Figure 11a shows this breakdown for a data size of 2^10 objects, Figure 11b shows 2^15 objects, and Figure 11c shows 2^20 total objects.
+
 <details>
 <summary>Sample Figure 11a, 11b, 11c output</summary>
     
@@ -118,6 +135,8 @@ The graph will be located in `~/snoopy/experiments/artifact_figures/10b.pdf`. Th
 ```sh
 python3 runExperiment.py -f 12a -srg      # 2 minutes
 ```
+This command runs 1 experiment and then plots the data for Figure 12a, showing the performance of bitonic sort using multiple threads.
+
 <details>
 <summary>Sample Figure 12a output</summary>
     
@@ -128,6 +147,8 @@ python3 runExperiment.py -f 12a -srg      # 2 minutes
 ```sh
 python3 runExperiment.py -f 12b -srg      # 12 minutes
 ```
+This command runs 1 experiment and then plots the data for Figure 12a, showing the performance of a subORAM processing a batch using multiple threads.
+
 <details>
 <summary>Sample Figure 12b output</summary>
     
@@ -138,17 +159,22 @@ python3 runExperiment.py -f 12b -srg      # 12 minutes
 ```sh
 ./figure13.sh     # 160 minutes
 ```
+This command runs 3 experiments and then plots the data for Figure 13 showing the affect of increasing machines on Snoopy where the subORAMs are replaced with Oblix.
+
 <details>
 <summary>Sample Figure 13 output</summary>
     
 ![Sample Figure 13](experiments/artifact_figures/sample/13.png)
 </details>
+Again, there may be some variance between the artifact and paper graph, but their trends should strongly resemble each other. This is due to the artifact only measuring requests for 10 seconds/iteration instead of 20 seconds to save on time.
 
 ## Figure 14a, 14b
 **PREREQUISITE: Requires [Figure 11a, 11b, and 11c](#figure-11a-11b-11c).**
 ```sh
 ./figure14.sh     # 2 minutes
 ```
+This command runs the planner using the microbenchmarks collected in Figure 11's experiments and plots Figures 14a, 14b which show the optimal system configuration as throughput requirements increase for different data sizes.
+
 <details>
 <summary>Sample Figure 14a, 14b output</summary>
    
