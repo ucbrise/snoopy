@@ -21,7 +21,8 @@ block_sz = 160
 
 params = ["config1", "config3", "config2"]
 colors = ["#E65F8E", "#A86BD1", "#3AA5D1"]
-labels = ["$2^{25}$ blocks", "$2^{20}$ blocks", "$2^{15}$ blocks"]
+#labels = ["$2^{25}$ blocks", "$2^{20}$ blocks", "$2^{15}$ blocks"]
+labels = ["1M objects", "10K objects", "placeholder"]
 markers = ["o","*","^"]
 
 suborams = defaultdict(list)
