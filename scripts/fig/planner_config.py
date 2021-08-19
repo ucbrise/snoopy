@@ -67,7 +67,8 @@ for suboram in suborams:
 '''
 for i, param in enumerate(params):
     s = [x/1500.0 + 10 for x in throughput_filtered[param]]
-    ax.scatter(suborams_filtered[param], lbs_filtered[param], color=config.planner_colors[i], label=labels[i], marker=config.planner_markers[i],s=s)
+    if suborams_filtered[param]:
+        ax.scatter(suborams_filtered[param], lbs_filtered[param], color=config.planner_colors[i], label=labels[i], marker=config.planner_markers[i],s=s)
     #plt.plot(np.unique(suborams[param]), np.poly1d(np.polyfit(suborams[param], lbs[param], 1))(np.unique(suborams[param])), color=colors[i])
 ax.set_xlabel("SubORAMs")
 ax.set_ylabel("Load balancers")

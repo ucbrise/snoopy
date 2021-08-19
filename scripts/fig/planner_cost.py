@@ -62,7 +62,8 @@ for suboram in suborams:
 '''
 for i, param in enumerate(params):
     s = [x/1500.0 + 10 for x in throughput_filtered[param]]
-    ax.scatter(throughput_filtered[param], cost_filtered[param], color=config.planner_colors[i], label=labels[i], marker=config.planner_markers[i],s=s)
+    if throughput_filtered[param]:
+        ax.scatter(throughput_filtered[param], cost_filtered[param], color=config.planner_colors[i], label=labels[i], marker=config.planner_markers[i],s=s)
     #plt.plot(np.unique(throughput[param]), np.poly1d(np.polyfit(throughput[param], cost[param], 1))(np.unique(throughput[param])), color=colors[i])
 ax.set_xlabel("Throughput (reqs/sec)")
 ax.set_ylabel("Cost per month (\$)")
@@ -75,5 +76,12 @@ ax.set_yticklabels(["\$1K", "\$2K","\$3K", "\$4K"])
 #plt.legend()
 
 remove_chart_junk(plt,ax,xticks=False)
-custom_style.save_fig(fig, out_name, [1.6, 1.5])
+if args.title:
+    plt.title(args.title, y=1.3)
+    #ax.set_title(args.title)
+if args.large:
+    plt.legend()
+    custom_style.save_fig(fig, out_name, [3, 2.5], pad=0.3)
+else:
+    custom_style.save_fig(fig, out_name, [1.6, 1.5])
 plt.savefig("temp.pdf")
