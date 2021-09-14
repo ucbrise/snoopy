@@ -19,7 +19,7 @@
 #include "obl_primitives.h"
 #include "ring_buffer.h"
 
-#define BUF_BUCKETS 128
+#define BUF_BUCKETS 512
 
 template<typename EnclaveFn, typename... Args>
 std::thread spawn_enclave_thread(EnclaveFn&& enc_fn, Args&&... args) {
