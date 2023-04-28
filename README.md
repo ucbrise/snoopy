@@ -253,6 +253,8 @@ git submodule update --init --recursive
 
 You could also have cloned this repo with `git clone --recursive REPO_URL` to do this automatically.
 
+**On Ubuntu 20.04 or later, you will need to install g++-7 and replace all instances of `cmake` with `CXX=g++-7 cmake` in the below commands.** This code relies on intrinsic builtins present in g++ 7 but not later versions of g++.
+
 Protobuf:
 ```sh
 # On ubuntu 18.04
