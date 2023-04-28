@@ -261,7 +261,7 @@ cd third_party/protobuf
 mkdir build
 cd build
 cmake -Dprotobuf_BUILD_TESTS=OFF -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=`pwd`/../install ..
-make -j `nproc`
+make -j
 make install
 ```
 
@@ -275,7 +275,7 @@ cmake -DCMAKE_PREFIX_PATH=`pwd`/../../protobuf/cmake/install -DgRPC_INSTALL=ON -
       -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_INSTALL_PREFIX=`pwd`/install \
       ../
-make
+make -j
 make install
 ```
 
