@@ -244,13 +244,20 @@ All figures produced by this artifact are located in `~/snoopy/experiments/artif
 
 # Playing with Snoopy
 ## Building Snoopy Locally
+
+Make sure submodules are cloned recurisvely:
+
+```sh
+git submodule update --init --recursive
+```
+
+You could also have cloned this repo with `git clone --recursive REPO_URL` to do this automatically.
+
 Protobuf:
 ```sh
 # On ubuntu 18.04
 sudo apt-get install build-essential autoconf libtool pkg-config automake zlib1g-dev
-cd third_party
-git submodule update --init
-cd protobuf/cmake
+cd third_party/protobuf
 mkdir build
 cd build
 cmake -Dprotobuf_BUILD_TESTS=OFF -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=`pwd`/../install ..
@@ -260,8 +267,7 @@ make install
 
 gRPC (requires protobuf first):
 ```sh
-cd grpc
-git submodule update --init
+cd third_party/grpc
 mkdir build
 cd build
 cmake -DCMAKE_PREFIX_PATH=`pwd`/../../protobuf/cmake/install -DgRPC_INSTALL=ON -DgRPC_BUILD_TESTS=OFF \
