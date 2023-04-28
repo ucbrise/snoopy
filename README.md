@@ -281,6 +281,13 @@ make install
 
 Need to put boost library in `/usr/local/` (doesn't need to be built or installed).
 
+Compile Snoopy:
+```sh
+mkdir build
+cmake ..
+make -j suboram && make -j
+```
+
 Running anything in the `scripts` directory:
 
 Follow instructions here: https://docs.microsoft.com/en-us/azure/developer/python/configure-local-development-environment?tabs=cmd
