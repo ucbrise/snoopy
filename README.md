@@ -260,7 +260,7 @@ sudo apt-get install build-essential autoconf libtool pkg-config automake zlib1g
 cd third_party/protobuf
 mkdir build
 cd build
-cmake -Dprotobuf_BUILD_TESTS=OFF -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=`pwd`/../install ..
+cmake -Dprotobuf_BUILD_TESTS=OFF -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=`pwd`/../install ../cmake
 make -j
 make install
 ```
@@ -270,10 +270,10 @@ gRPC (requires protobuf first):
 cd third_party/grpc
 mkdir build
 cd build
-cmake -DCMAKE_PREFIX_PATH=`pwd`/../../protobuf/cmake/install -DgRPC_INSTALL=ON -DgRPC_BUILD_TESTS=OFF \
+cmake -DCMAKE_PREFIX_PATH=`pwd`/../../protobuf/install -DgRPC_INSTALL=ON -DgRPC_BUILD_TESTS=OFF \
       -DgRPC_PROTOBUF_PROVIDER=package -DgRPC_ZLIB_PROVIDER=package -DgRPC_CARES_PROVIDER=module -DgRPC_SSL_PROVIDER=package \
       -DCMAKE_BUILD_TYPE=Release \
-      -DCMAKE_INSTALL_PREFIX=`pwd`/install \
+      -DCMAKE_INSTALL_PREFIX=`pwd`/../install \
       ../
 make -j
 make install

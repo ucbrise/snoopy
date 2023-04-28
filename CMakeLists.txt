@@ -23,7 +23,7 @@ find_package(OpenEnclave CONFIG REQUIRED)
 find_package(OpenSSL REQUIRED)
 
 # GRPC and Protocol Buffers libraries location
-list(APPEND CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/third_party/protobuf/install" "${CMAKE_SOURCE_DIR}/third_party/grpc/build/install")
+list(APPEND CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/third_party/protobuf/install" "${CMAKE_SOURCE_DIR}/third_party/grpc/install")
 
 # Cmake find modules
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
