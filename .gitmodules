@@ -6,3 +6,6 @@
 	path = third_party/grpc
 	url = https://github.com/grpc/grpc.git
     ignore = all
+[submodule "third_party/liboblivious"]
+	path = third_party/liboblivious
+	url = https://github.com/nicholasngai/liboblivious.git
