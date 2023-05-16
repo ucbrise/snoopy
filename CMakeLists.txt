@@ -51,6 +51,11 @@ endmacro()
 
 add_definitions( -DUSE_AVX2=1 )
 
+option(OE_SIMULATION "Use Open Enclave simulation mode" OFF)
+if (OE_SIMULATION)
+  add_definitions(-DOE_SIMULATION)
+endif()
+
 add_subdirectory(common)
 message(${PROTO_SRCS})
 add_subdirectory(common/log)

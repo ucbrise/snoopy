@@ -181,7 +181,11 @@ oe_enclave_t* SuboramHost::create_enclave(const char* enclave_path) {
     oe_result_t result = oe_create_suboram_enclave(
         enclave_path,
         OE_ENCLAVE_TYPE_SGX,
-        OE_ENCLAVE_FLAG_DEBUG,
+        OE_ENCLAVE_FLAG_DEBUG
+#ifdef OE_SIMULATION
+            | OE_ENCLAVE_FLAG_SIMULATE
+#endif
+            ,
         NULL,
         0,
         &enclave);
