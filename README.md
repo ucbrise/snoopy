@@ -244,36 +244,51 @@ All figures produced by this artifact are located in `~/snoopy/experiments/artif
 
 # Playing with Snoopy
 ## Building Snoopy Locally
+
+Make sure submodules are cloned recurisvely:
+
+```sh
+git submodule update --init --recursive
+```
+
+You could also have cloned this repo with `git clone --recursive REPO_URL` to do this automatically.
+
+**On Ubuntu 20.04 or later, you will need to install g++-7 and replace all instances of `cmake` with `CXX=g++-7 cmake` in the below commands.** This code relies on intrinsic builtins present in g++ 7 but not later versions of g++.
+
 Protobuf:
 ```sh
 # On ubuntu 18.04
 sudo apt-get install build-essential autoconf libtool pkg-config automake zlib1g-dev
-cd third_party
-git submodule update --init
-cd protobuf/cmake
+cd third_party/protobuf
 mkdir build
 cd build
-cmake -Dprotobuf_BUILD_TESTS=OFF -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=`pwd`/../install ..
-make -j `nproc`
+cmake -Dprotobuf_BUILD_TESTS=OFF -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=`pwd`/../install ../cmake
+make -j`nproc`
 make install
 ```
 
 gRPC (requires protobuf first):
 ```sh
-cd grpc
-git submodule update --init
+cd third_party/grpc
 mkdir build
 cd build
-cmake -DCMAKE_PREFIX_PATH=`pwd`/../../protobuf/cmake/install -DgRPC_INSTALL=ON -DgRPC_BUILD_TESTS=OFF \
+cmake -DCMAKE_PREFIX_PATH=`pwd`/../../protobuf/install -DgRPC_INSTALL=ON -DgRPC_BUILD_TESTS=OFF \
       -DgRPC_PROTOBUF_PROVIDER=package -DgRPC_ZLIB_PROVIDER=package -DgRPC_CARES_PROVIDER=module -DgRPC_SSL_PROVIDER=package \
       -DCMAKE_BUILD_TYPE=Release \
-      -DCMAKE_INSTALL_PREFIX=`pwd`/install \
+      -DCMAKE_INSTALL_PREFIX=`pwd`/../install \
       ../
-make
+make -j`nproc`
 make install
 ```
 
 Need to put boost library in `/usr/local/` (doesn't need to be built or installed).
+
+Compile Snoopy:
+```sh
+mkdir build
+cmake ..
+make -j suboram && make -j
+```
 
 Running anything in the `scripts` directory:
 
